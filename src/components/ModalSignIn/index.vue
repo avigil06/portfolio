@@ -30,33 +30,32 @@ import InputText from './components/InputText.vue';
 @Component({
   name: 'ModalSignIn',
   components: {
-    Button,
-    Lock,
-    InputText,
+  Button,
+  Lock,
+  InputText,
   },
-})
+  })
 export default class ModalSignIn extends Vue {
   mode: string = ''
+
   password: string = ''
 
-  setMode (mode: string): void {
+  setMode(mode: string): void {
     this.mode = mode;
   }
 
-  reset (): void {
+  reset(): void {
     this.mode = '';
     this.password = '';
   }
 
-  submit (): void {
+  submit(): void {
     this.mode = this.password.length > 0 ? 'loading' : 'error';
     if (this.mode !== 'loading') return;
-    setTimeout(() => this.mode = this.simulateRequest(), 5000);
-  }
-
-  simulateRequest (): string {
-    const rng = Math.floor(Math.random() * Math.floor(10));
-    return rng >= 5 ? 'success' : 'failed';
+    const simulateRequest: Function = (): string => (Math.floor(Math.random() * Math.floor(10)) >= 5 ? 'success' : 'failed');
+    setTimeout(() => {
+      this.mode = simulateRequest();
+    }, 5000);
   }
 }
 </script>

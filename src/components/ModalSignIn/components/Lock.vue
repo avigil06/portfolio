@@ -3,18 +3,17 @@
     class="lock"
     :class="{ 'lock_error': !!error,
               'lock_success': !!success }">
-    <img :src="Image" />
+    <img src="@/assets/icons/lock.svg" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import LockSvg from '../img/lock.svg';
 
 @Component({})
 export default class Lock extends Vue {
-  Image: any = LockSvg
   @Prop() private error: boolean = false;
+
   @Prop() private success: boolean = false;
 }
 </script>
@@ -82,4 +81,3 @@ export default class Lock extends Vue {
   }
 }
 </style>
-

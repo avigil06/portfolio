@@ -15,10 +15,8 @@ import ModalSignIn from '../components/ModalSignIn/index.vue';
 
 @Component({
   components: {
-    ModalSignIn,
-  }
-})
-export default class Forms extends Vue {
-
-}
+  ModalSignIn,
+  },
+  })
+export default class Forms extends Vue { }
 </script>

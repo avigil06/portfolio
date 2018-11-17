@@ -16,24 +16,27 @@ export default class Button extends Vue {
 
   onClick (event: MouseEvent): void {
     const { pageX, pageY } = event;
-    const { offsetWidth } = this.$refs.container;
-    const { left, top } = this.$refs.container.getBoundingClientRect();
+    const el = <HTMLElement>this.$refs.container;
+    const { offsetWidth } = el;
+    const { top, left } = el.getBoundingClientRect(); 
     this.addRipple(pageX - left, pageY - top, offsetWidth);
     this.$emit('click', event);
   }
 
   addRipple (x: number, y: number, width: number): void {
+    const container = <HTMLElement>this.$refs.container;
     const ripple = document.createElement('span');
     ripple.setAttribute('style', [
       `top: ${y - (width / 2)}px; left: ${x - (width / 2)}px; `,
       `width: ${width}px; height: ${width}px`,
     ].join(' '));
-    this.$refs.container.appendChild(ripple);
+    container.appendChild(ripple);
   }
 
   cleanUp (): void {
-    while(this.$refs.container.firstChild) {
-      this.$refs.container.removeChild(this.$refs.container.firstChild);
+    const container = <HTMLElement>this.$refs.container;
+    while(container.firstChild) {
+      container.removeChild(container.firstChild);
     }
   }
 

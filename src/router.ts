@@ -25,6 +25,6 @@ export default new Router({
       path: '/forms',
       name: 'forms',
       component: () => import(/* webpackChunkName: "forms" */ './views/Forms.vue'),
-    }
+    },
   ],
 });

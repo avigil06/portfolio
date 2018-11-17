@@ -16,11 +16,14 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component({
   name: 'InputText',
-})
+  })
 export default class InputText extends Vue {
   @Prop() private error!: boolean;
+
   @Prop() private loading!: boolean;
+
   @Prop() private value!: string;
+
   @Prop() private placeholder!: string;
 }
 </script>

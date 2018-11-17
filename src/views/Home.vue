@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <h1>Component Groups</h1>
     <ul>
       <li><router-link :to="{ name: 'forms' }">Forms</router-link></li>
