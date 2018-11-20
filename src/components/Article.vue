@@ -23,7 +23,7 @@ import { getHtml } from '@/utils/prismic';
 export default class Article extends Vue {
   @Prop() private title!: string;
 
-  @Prop() private body!: DataContainer[];
+  @Prop() private body!: Prismic.DataContainer[];
 
   @Prop() private publishDate!: Date;
 

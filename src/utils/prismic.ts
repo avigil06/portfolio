@@ -1,8 +1,8 @@
 /** */
-export function getHtml(line: DataContainer): string {
+export function getHtml(line: Prismic.DataContainer): string {
   let { text } = line;
 
-  line.spans.forEach((span: SpanContainer) => {
+  line.spans.forEach((span: Prismic.SpanContainer) => {
     if (span.type === 'hyperlink') {
       const s = text.split('');
       s.splice(

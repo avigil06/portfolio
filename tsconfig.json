@@ -12,9 +12,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": ["webpack-env", "jest"],
-    "typeRoots": ["src/types/*"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/types/*": ["src/types/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

@@ -11,8 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Prismic from 'prismic-javascript';
+import prismic from 'prismic-javascript';
 import Article from '@/components/Article.vue';
+// import Prismic from '@/types/prismic.d.ts';
 
 @Component({
   components: {
@@ -28,9 +29,9 @@ export default class Home extends Vue {
 
   async getArticles() {
     const endpoint: string = 'https://avigil-portfolio-blog.prismic.io/api/v2';
-    const api: PrismicAPI = await Prismic.getApi(endpoint);
+    const api: Prismic.Api = await prismic.getApi(endpoint);
     const { results } = await api.query('');
-    this.articles = results.map((document: ArticleContainer): BlogArticle => ({
+    this.articles = results.map((document: Prismic.ArticleContainer): Prismic.Article => ({
       ...document.data,
       publishDate: new Date(document.last_publication_date),
     }));
