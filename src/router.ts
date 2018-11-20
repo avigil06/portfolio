@@ -17,5 +17,10 @@ export default new Router({
       name: 'forms',
       component: () => import(/* webpackChunkName: "forms" */ './views/Forms.vue'),
     },
+    {
+      path: '/blog/:slug',
+      name: 'blog-article',
+      component: () => import(/* webpackChunkName: "blog" */ './views/Article.vue'),
+    },
   ],
 });
