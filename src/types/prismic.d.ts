@@ -33,4 +33,12 @@ declare namespace Prismic {
     data: Article;
     last_publication_date: string;
   }
+
+  export interface prismic_vue {
+    client: client;
+  }
+
+  interface client {
+    query: Function;
+  }
 }

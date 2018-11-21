@@ -17,9 +17,9 @@ import Article from '@/components/Article.vue';
 
 @Component({
   components: {
-  Article,
+    Article,
   },
-  })
+})
 export default class Home extends Vue {
   articles: Article[] = [];
 
@@ -28,9 +28,7 @@ export default class Home extends Vue {
   }
 
   async getArticles() {
-    const endpoint: string = 'https://avigil-portfolio-blog.prismic.io/api/v2';
-    const api: Prismic.Api = await prismic.getApi(endpoint);
-    const { results } = await api.query('');
+    const { results } = await this.$prismic.client.query('');
     this.articles = results.map((document: Prismic.ArticleContainer): Prismic.Article => ({
       ...document.data,
       publishDate: new Date(document.last_publication_date),
@@ -43,14 +41,20 @@ export default class Home extends Vue {
 .home {
   padding: 1rem 2.5rem;
 
-  .article:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: #433f4e;
+  .article {
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #433f4e;
+    }
+
+    &:last-child:after {
+      height: 0;
+    }
   }
 }
 </style>

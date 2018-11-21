@@ -5,11 +5,12 @@
       <pre class="article__publish-date">Published on {{ formattedDate }}</pre>
     </header>
     <div class="article__body">
-      <template v-for="(line, key) in body">
+      <!-- <template v-for="(line, key) in body">
         <h2 :key="key" v-if="line.type === 'heading2'">{{ line.text }}</h2>
         <h3 :key="key" v-else-if="line.type === 'heading3'">{{ line.text }}</h3>
         <p :key="key" v-else-if="line.type === 'paragraph'" v-html="getHtml(line)" />
-      </template>
+      </template> -->
+      <prismic-rich-text :field="body" />
     </div>
   </section>
 </template>
@@ -17,7 +18,6 @@
 <script lang="ts">
 import { Vue, Prop, Component } from 'vue-property-decorator';
 import { format } from 'date-fns';
-import { getHtml } from '@/utils/prismic';
 
 @Component
 export default class Article extends Vue {
@@ -30,8 +30,6 @@ export default class Article extends Vue {
   get formattedDate() {
     return format(this.publishDate, 'MM/DD/YYYY');
   }
-
-  getHtml: Function = getHtml;
 }
 </script>
 
@@ -39,7 +37,8 @@ export default class Article extends Vue {
 .article {
   position: relative;
   text-align: left;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
 
   .article__header-container {
     margin-bottom: 1rem;

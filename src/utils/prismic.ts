@@ -15,6 +15,14 @@ export function getHtml(line: Prismic.DataContainer): string {
         )}</a>`,
       );
       text = s.join('');
+    } else if (span.type === 'strong') {
+      const s = text.split('');
+      s.splice(
+        span.start,
+        span.end - span.start,
+        `<strong>${line.text.substring(span.start, span.end)}</strong>`,
+      );
+      text = s.join('');
     }
   });
 
